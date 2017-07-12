@@ -13,7 +13,7 @@ interface IImageLoader {
    * @param[view] view
    * @param[url] url
    */
-  fun loadImage(view: CircleAvatarView, placeholder: AvatarPlaceholder, url: String)
+  fun loadImage(view: CircleAvatarView, placeholder: AvatarPlaceholder, url: String?)
 
   /**
    * Load image from given *url* into specified *view*.
@@ -24,5 +24,5 @@ interface IImageLoader {
    * @param[url] url
    * @param[name] name
    */
-  fun loadImage(view: CircleAvatarView, url: String, name: String)
+  fun loadImage(view: CircleAvatarView, url: String?, name: String)
 }

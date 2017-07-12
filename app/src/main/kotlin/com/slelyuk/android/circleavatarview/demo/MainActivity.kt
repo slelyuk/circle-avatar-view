@@ -33,6 +33,6 @@ class MainActivity : AppCompatActivity() {
         "https://cdn2.iconfinder.com/data/icons/avatar-face/96/avatar48-512.png")
 
     val view6: CircleAvatarView = findViewById(id.avatar6) as CircleAvatarView
-    view6.setImageDrawable(AvatarPlaceholder("Six Axis"))
+    PicassoLoader().loadImage(view6, AvatarPlaceholder("Six Axis"), null)
   }
 }

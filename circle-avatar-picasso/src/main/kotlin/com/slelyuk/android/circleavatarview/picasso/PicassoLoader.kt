@@ -10,7 +10,12 @@ import com.squareup.picasso.Picasso
  */
 class PicassoLoader : ImageLoaderBase() {
 
-  override fun loadImage(view: CircleAvatarView, placeholder: AvatarPlaceholder, url: String) {
+  override fun loadImage(view: CircleAvatarView, placeholder: AvatarPlaceholder, url: String?) {
+    if (url.isNullOrEmpty()) {
+      view.setImageDrawable(placeholder)
+      return
+    }
+
     Picasso.with(view.context)
         .load(url)
         .placeholder(placeholder)
