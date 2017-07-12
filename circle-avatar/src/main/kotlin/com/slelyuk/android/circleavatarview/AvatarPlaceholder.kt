@@ -41,9 +41,9 @@ class AvatarPlaceholder(name: String, tf: Typeface = Typeface.DEFAULT) : Drawabl
       applyAvatarTextValues()
     }
 
-    canvas.apply {
-      drawRect(placeholderBounds, backgroundPaint)
-      drawText(avatarText, textStartXPoint, textStartYPoint, textPaint)
+    canvas.let {
+      it.drawRect(placeholderBounds, backgroundPaint)
+      it.drawText(avatarText, textStartXPoint, textStartYPoint, textPaint)
     }
   }
 

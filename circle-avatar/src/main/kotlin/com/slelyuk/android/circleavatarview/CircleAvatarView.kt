@@ -2,9 +2,8 @@ package com.slelyuk.android.circleavatarview
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Bitmap.Config.ARGB_8888
+import android.graphics.Bitmap.Config
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style.FILL
 import android.graphics.PorterDuff.Mode.SRC_IN
@@ -57,21 +56,21 @@ class CircleAvatarView : AppCompatImageView {
     val arr = obtainStyledAttributes(attrs, styleable.CircleAvatarView)
     try {
       borderColor = arr.getColor(styleable.CircleAvatarView_border_color, defaultBorderColor)
-      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_border_width, defaultBorderWidth)
+      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_border_width,
+          defaultBorderWidth)
     } finally {
       arr.recycle()
     }
 
-    borderPaint.apply {
-      isAntiAlias = true
-      style = FILL
-      color = borderColor
+    borderPaint.let {
+      it.isAntiAlias = true
+      it.style = FILL
+      it.color = borderColor
     }
 
-    mainPaint.apply {
-      isAntiAlias = true
-      color = Color.WHITE
-      xfermode = PorterDuffXfermode(SRC_IN)
+    mainPaint.let {
+      it.isAntiAlias = true
+      it.xfermode = PorterDuffXfermode(SRC_IN)
     }
   }
 
@@ -84,32 +83,32 @@ class CircleAvatarView : AppCompatImageView {
     val radius = circleRadius + borderWidth
 
     //Draw Border
-    canvas.apply {
-      translate(circleCenterXValue, circleCenterYValue)
-      drawCircle(radius, radius, radius, borderPaint)
-      drawBitmap(bitmap, 0f, 0f, null)
+    canvas.let {
+      it.translate(circleCenterXValue, circleCenterYValue)
+      it.drawCircle(radius, radius, radius, borderPaint)
+      it.drawBitmap(bitmap, 0f, 0f, null)
     }
   }
 
   private fun drawableToBitmap(drawable: Drawable?): Bitmap? {
-    val bitmap = Bitmap.createBitmap(viewSize, viewSize, ARGB_8888)
+    val bitmap = Bitmap.createBitmap(viewSize, viewSize, Config.ARGB_8888)
     val canvas = Canvas(bitmap)
-    drawable?.apply {
-      setBounds(0, 0, viewSize, viewSize)
-      draw(canvas)
+    drawable?.let {
+      it.setBounds(0, 0, viewSize, viewSize)
+      it.draw(canvas)
     }
     return bitmap
   }
 
   private fun cutIntoCircle(bitmap: Bitmap?): Bitmap? {
-    val output = Bitmap.createBitmap(viewSize, viewSize, ARGB_8888)
+    val output = Bitmap.createBitmap(viewSize, viewSize, Config.ARGB_8888)
     val canvas = Canvas(output)
 
-    canvas.apply {
+    canvas.let {
       val radiusWithBorder = (circleRadius + borderWidth)
-      drawARGB(0, 0, 0, 0)
-      drawCircle(radiusWithBorder, radiusWithBorder, circleRadius, borderPaint)
-      drawBitmap(bitmap, circleRect, circleRect, mainPaint)
+      it.drawARGB(0, 0, 0, 0)
+      it.drawCircle(radiusWithBorder, radiusWithBorder, circleRadius, borderPaint)
+      it.drawBitmap(bitmap, circleRect, circleRect, mainPaint)
     }
 
     return output
