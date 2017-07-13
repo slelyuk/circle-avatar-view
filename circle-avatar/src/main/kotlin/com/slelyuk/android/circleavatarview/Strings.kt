@@ -12,7 +12,7 @@ private const val COUNT_NAME_INITIALS = 2
  * @return abbreviation from given name
  */
 fun String.abbreviateName(initialsCount: Int = COUNT_NAME_INITIALS): String {
-  return splitToSequence(" ")
+  return splitToSequence(" ", ".")
       .take(initialsCount)
       .map { w -> w[0].toUpperCase() }
       .fold("", { acc, c -> acc.plus(c) })

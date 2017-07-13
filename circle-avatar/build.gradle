@@ -35,11 +35,12 @@ dependencies {
 }
 
 publish {
+  repoName = 'libs-snapshot-local'
   groupId = 'com.slelyuk.android'
   artifactId = 'circle-avatar'
   publishVersion = '1.0.0'
   desc = ''
   website = 'https://github.com/slelyuk/circle-avatar-view'
-  bintrayUser = properties["BINTRAY_USERNAME"]
-  bintrayKey = properties["BINTRAY_PASSWORD"]
+  bintrayUser = "$System.env.BINTRAY_USERNAME"
+  bintrayKey = "$System.env.BINTRAY_PASSWORD"
 }
