@@ -43,4 +43,5 @@ publish {
   website = 'https://github.com/slelyuk/circle-avatar-view'
   bintrayUser = "$System.env.BINTRAY_USERNAME"
   bintrayKey = "$System.env.BINTRAY_PASSWORD"
+  dryRun = false
 }
