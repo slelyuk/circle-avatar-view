@@ -1,15 +1,12 @@
 language: android
 jdk: oraclejdk8
 sudo: false
-
 android:
   components:
-    - tools
-    - platform-tools
-    - tools
-    - build-tools-25.0.3
-    - android-25
-    - extra-google-m2repository
-    - extra-android-m2repository
-
-script: ./gradlew clean build bintrayUpload
+  - tools
+  - platform-tools
+  - tools
+  - build-tools-25.0.3
+  - android-25
+  - extra-google-m2repository
+  - extra-android-m2repository

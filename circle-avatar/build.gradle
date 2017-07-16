@@ -38,7 +38,7 @@ publish {
   repoName = 'libs-snapshot-local'
   groupId = 'com.slelyuk.android'
   artifactId = 'circle-avatar'
-  publishVersion = '1.0.0'
+  publishVersion = "$rootProject.ext.publishVersion"
   desc = ''
   website = 'https://github.com/slelyuk/circle-avatar-view'
   bintrayUser = "$System.env.BINTRAY_USERNAME"

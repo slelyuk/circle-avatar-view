@@ -1,8 +1,8 @@
 package com.slelyuk.android.circleavatarview.picasso
 
+import android.support.v7.widget.AppCompatImageView
 import com.slelyuk.android.circleavatarview.AvatarPlaceholder
 import com.slelyuk.android.circleavatarview.loader.ImageLoaderBase
-import com.slelyuk.android.circleavatarview.CircleAvatarView
 import com.squareup.picasso.Picasso
 
 /**
@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
  */
 class PicassoLoader : ImageLoaderBase() {
 
-  override fun loadImage(view: CircleAvatarView, placeholder: AvatarPlaceholder, url: String?) {
+  override fun loadImage(view: AppCompatImageView, placeholder: AvatarPlaceholder, url: String?) {
     if (url.isNullOrEmpty()) {
       view.setImageDrawable(placeholder)
       return

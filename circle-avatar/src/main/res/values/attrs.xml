@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="CircleAvatarView">
-    <attr format="color" name="border_color"/>
-    <attr format="dimension" name="border_width"/>
+    <attr format="color" name="av_border_color"/>
+    <attr format="dimension" name="av_border_width"/>
   </declare-styleable>
 </resources>

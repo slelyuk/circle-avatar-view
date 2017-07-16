@@ -44,8 +44,7 @@ class CircleAvatarView : AppCompatImageView {
     init(context, attrs)
   }
 
-  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs,
-      defStyleAttr) {
+  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
     init(context, attrs)
   }
 
@@ -55,9 +54,8 @@ class CircleAvatarView : AppCompatImageView {
 
     val arr = obtainStyledAttributes(attrs, styleable.CircleAvatarView)
     try {
-      borderColor = arr.getColor(styleable.CircleAvatarView_border_color, defaultBorderColor)
-      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_border_width,
-          defaultBorderWidth)
+      borderColor = arr.getColor(styleable.CircleAvatarView_av_border_color, defaultBorderColor)
+      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_av_border_width, defaultBorderWidth)
     } finally {
       arr.recycle()
     }
@@ -77,13 +75,15 @@ class CircleAvatarView : AppCompatImageView {
   public override fun onDraw(canvas: Canvas) {
     updateViewParams(canvas)
 
-    if (viewSize == 0) return
+    if (viewSize == 0) {
+      return
+    }
 
     val bitmap = cutIntoCircle(drawableToBitmap(circleDrawable)) ?: return
-    val radius = circleRadius + borderWidth
 
     //Draw Border
     canvas.let {
+      val radius = circleRadius + borderWidth
       it.translate(circleCenterXValue, circleCenterYValue)
       it.drawCircle(radius, radius, radius, borderPaint)
       it.drawBitmap(bitmap, 0f, 0f, null)
@@ -91,6 +91,10 @@ class CircleAvatarView : AppCompatImageView {
   }
 
   private fun drawableToBitmap(drawable: Drawable?): Bitmap? {
+    if (viewSize == 0) {
+      return null
+    }
+
     val bitmap = Bitmap.createBitmap(viewSize, viewSize, Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     drawable?.let {
@@ -101,6 +105,10 @@ class CircleAvatarView : AppCompatImageView {
   }
 
   private fun cutIntoCircle(bitmap: Bitmap?): Bitmap? {
+    if (viewSize == 0) {
+      return null
+    }
+
     val output = Bitmap.createBitmap(viewSize, viewSize, Config.ARGB_8888)
     val canvas = Canvas(output)
 

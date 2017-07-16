@@ -25,6 +25,7 @@ allprojects {
     buildToolsVersion = '25.0.3'
     minSdkVersion = 15
     targetSdkVersion = ext.compileSdkVersion
+    publishVersion = '1.0.3'
   }
 
   repositories {

@@ -2,4 +2,17 @@
 <resources>
   <color name="default_border_color">@android:color/white</color>
   <color name="bitmap_background_color">?colorPrimary</color>
+
+  <!-- Default palette -->
+  <color name="color1">#42860E</color>
+  <color name="color2">#2C6965</color>
+  <color name="color3">#005C7D</color>
+  <color name="color4">#584D70</color>
+  <color name="color5">#AA2C6C</color>
+  <color name="color6">#C14139</color>
+  <color name="color7">#BF5500</color>
+  <color name="color8">#636970</color>
+
+  <color name="defaultAvatarColor">@color/color8</color>
+
 </resources>

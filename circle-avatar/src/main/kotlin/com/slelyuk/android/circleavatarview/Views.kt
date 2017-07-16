@@ -4,7 +4,7 @@ import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.View
 
-internal const val DEFAULT_TEXT_SIZE_PERCENTAGE = 40
+internal const val DEFAULT_TEXT_SIZE_PERCENTAGE = 33
 
 /**
  * Gets styled attributes.
@@ -13,7 +13,7 @@ internal const val DEFAULT_TEXT_SIZE_PERCENTAGE = 40
  * @param[styleable] styleable
  * @return styled attributes
  */
-fun View.obtainStyledAttributes(attrs: AttributeSet?, styleable: IntArray): TypedArray {
+internal fun View.obtainStyledAttributes(attrs: AttributeSet?, styleable: IntArray): TypedArray {
   return context.theme.obtainStyledAttributes(attrs, styleable, 0, 0)
 }
 

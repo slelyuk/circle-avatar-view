@@ -1,11 +1,11 @@
 package com.slelyuk.android.circleavatarview.loader
 
+import android.support.v7.widget.AppCompatImageView
 import com.slelyuk.android.circleavatarview.AvatarPlaceholder
-import com.slelyuk.android.circleavatarview.CircleAvatarView
 
 abstract class ImageLoaderBase : IImageLoader {
 
-  override fun loadImage(view: CircleAvatarView, url: String?, name: String) {
+  override fun loadImage(view: AppCompatImageView, url: String?, name: String) {
     loadImage(view, AvatarPlaceholder(name), url)
   }
 }
