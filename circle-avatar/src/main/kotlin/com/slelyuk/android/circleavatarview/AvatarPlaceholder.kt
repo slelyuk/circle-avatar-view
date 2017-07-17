@@ -9,7 +9,6 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
-import com.slelyuk.android.circleavatarview.AvatarPlaceholder.Companion
 
 /**
  * Drawable with defined name and typeface to be used with *CircleAvatarView*.
@@ -18,7 +17,12 @@ import com.slelyuk.android.circleavatarview.AvatarPlaceholder.Companion
  * @param[tf] typeface (*Typeface.DEFAULT* used if not specified)
  * @param[palette] palette
  */
-class AvatarPlaceholder(name: String, tf: Typeface? = null, val palette: List<Int> = AvatarPlaceholder.DEFAULT_PALETTE) : Drawable() {
+class AvatarPlaceholder(name: String, tf: Typeface? = null,
+    val palette: List<Int> = DEFAULT_PALETTE) : Drawable() {
+
+  constructor(name: String, tf: Typeface? = null) : this(name, tf, DEFAULT_PALETTE)
+
+  constructor(name: String) : this(name, null)
 
   private val textPaint = Paint().apply {
     isAntiAlias = true
@@ -29,10 +33,10 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null, val palette: List<In
   private val backgroundPaint = Paint().apply {
     isAntiAlias = true
     style = Paint.Style.FILL
-    color = getColor(name)
+    color = pickColor(name)
   }
 
-  private val avatarText: String = name.abbreviateName()
+  private val avatarText: String = abbreviateName(name)
 
   private var placeholderBounds: Rect? = null
   private var textStartXPoint = 0f
@@ -65,30 +69,46 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null, val palette: List<In
   }
 
   private fun applyAvatarTextValues() {
-    textPaint.textSize = calculateTextSize()
-    textStartXPoint = calculateTextStartXPoint()
-    textStartYPoint = calculateTextStartYPoint()
+    textPaint.textSize = textSize(bounds)
+    textStartXPoint = textStartXPoint()
+    textStartYPoint = textStartYPoint()
   }
 
-  private fun calculateTextStartXPoint(): Float {
-    val stringWidth = textPaint.measureText(avatarText)
+  fun textStartXPoint(bounds: Rect = this.bounds, text: String = avatarText,
+      paint: Paint = textPaint): Float {
+    val stringWidth = paint.measureText(text)
     return bounds.width() / 2f - stringWidth / 2f
   }
 
-  private fun calculateTextStartYPoint(): Float {
-    return bounds.height() / 2f - (textPaint.ascent() + textPaint.descent()) / 2f
+  fun textStartYPoint(bounds: Rect = this.bounds, paint: Paint = textPaint): Float {
+    return bounds.height() / 2f - (paint.ascent() + paint.descent()) / 2f
   }
 
-  private fun calculateTextSize(textSizePercentage: Int = DEFAULT_TEXT_SIZE_PERCENTAGE): Float {
+  fun textSize(bounds: Rect = this.bounds,
+      textSizePercentage: Int = DEFAULT_TEXT_SIZE_PERCENTAGE): Float {
     return bounds.height() * textSizePercentage / 100f
   }
 
-  private fun getColor(key: Any): Int {
+  fun pickColor(key: Any): Int {
     return palette[Math.abs(key.hashCode()) % palette.size]
   }
 
+  /**
+   * Converts full name into abbreviation with defined count of symbols.
+   *
+   * @param[initialsCount] count of abbreviation symbols
+   * @return abbreviation from given name
+   */
+  fun abbreviateName(input: String, initialsCount: Int = COUNT_NAME_INITIALS): String {
+    return input.splitToSequence(" ", ".")
+        .take(initialsCount)
+        .map { w -> w[0].toUpperCase() }
+        .fold("", { acc, c -> acc.plus(c) })
+  }
+
   companion object {
-    val DEFAULT_PALETTE: List<Int> = listOf(
+    private val COUNT_NAME_INITIALS = 2
+    private val DEFAULT_PALETTE: List<Int> = listOf(
         "#42860E",
         "#2C6965",
         "#005C7D",
