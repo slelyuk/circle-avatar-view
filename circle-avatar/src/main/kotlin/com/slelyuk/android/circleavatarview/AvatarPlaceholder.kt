@@ -100,10 +100,12 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null,
    * @return abbreviation from given name
    */
   fun abbreviateName(input: String, initialsCount: Int = COUNT_NAME_INITIALS): String {
-    return input.splitToSequence(" ", ".")
-        .take(initialsCount)
-        .map { w -> w[0].toUpperCase() }
-        .fold("", { acc, c -> acc.plus(c) })
+    val seq: Sequence<String> = input.trim().splitToSequence(" ", ".")
+    return if (seq.count() < initialsCount) {
+      if (input.length >= initialsCount) input.substring(0, initialsCount) else input
+    } else {
+      seq.take(initialsCount).map { w -> w[0] }.fold("", { acc, c -> acc.plus(c) })
+    }.toUpperCase()
   }
 
   companion object {

@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     view3.setImageDrawable(AvatarPlaceholder("Third Member"))
     view4.setImageDrawable(AvatarPlaceholder("Next Person"))
 
-    view6.setImageDrawable(AvatarPlaceholder("Only Drawable"))
+    view6.setImageDrawable(AvatarPlaceholder("N"))
   }
 
 
