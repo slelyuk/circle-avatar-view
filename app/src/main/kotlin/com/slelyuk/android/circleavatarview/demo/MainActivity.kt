@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
     //PicassoLoader().loadImage(view6, AvatarPlaceholder("Six Axis"), null)
 
     view3.setImageDrawable(AvatarPlaceholder("Third Member"))
-    view4.setImageDrawable(AvatarPlaceholder("Next Person"))
+    view4.setImageDrawable(AvatarPlaceholder("N..s.Se.."))
 
-    view6.setImageDrawable(AvatarPlaceholder("N"))
+    view6.setImageDrawable(AvatarPlaceholder("N. O."))
   }
 
 

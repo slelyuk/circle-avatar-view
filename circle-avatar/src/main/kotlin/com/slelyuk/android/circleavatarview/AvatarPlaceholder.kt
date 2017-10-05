@@ -99,10 +99,12 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null,
    * @param[initialsCount] count of abbreviation symbols
    * @return abbreviation from given name
    */
-  fun abbreviateName(input: String, initialsCount: Int = COUNT_NAME_INITIALS): String {
-    val seq: Sequence<String> = input.trim().splitToSequence(" ", ".")
+  private fun abbreviateName(input: String, initialsCount: Int = COUNT_NAME_INITIALS): String {
+    val validInput = input.replace(Regex("[^A-Za-z0-9]"), "")
+    val seq: Sequence<String> = validInput.trim()
+        .splitToSequence(" ")
     return if (seq.count() < initialsCount) {
-      if (input.length >= initialsCount) input.substring(0, initialsCount) else input
+      if (validInput.length >= initialsCount) validInput.substring(0, initialsCount) else validInput
     } else {
       seq.take(initialsCount).map { w -> w[0] }.fold("", { acc, c -> acc.plus(c) })
     }.toUpperCase()
