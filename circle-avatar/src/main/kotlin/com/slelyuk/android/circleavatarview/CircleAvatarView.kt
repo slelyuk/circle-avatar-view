@@ -44,7 +44,8 @@ class CircleAvatarView : AppCompatImageView {
     init(context, attrs)
   }
 
-  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs,
+      defStyleAttr) {
     init(context, attrs)
   }
 
@@ -55,7 +56,8 @@ class CircleAvatarView : AppCompatImageView {
     val arr = obtainStyledAttributes(attrs, styleable.CircleAvatarView)
     try {
       borderColor = arr.getColor(styleable.CircleAvatarView_av_border_color, defaultBorderColor)
-      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_av_border_width, defaultBorderWidth)
+      borderWidth = arr.getDimensionPixelSize(styleable.CircleAvatarView_av_border_width,
+          defaultBorderWidth)
     } finally {
       arr.recycle()
     }
@@ -63,7 +65,7 @@ class CircleAvatarView : AppCompatImageView {
     borderPaint.let {
       it.isAntiAlias = true
       it.style = FILL
-      it.color = borderColor
+      //it.color = borderColor
     }
 
     mainPaint.let {
@@ -83,9 +85,9 @@ class CircleAvatarView : AppCompatImageView {
 
     //Draw Border
     canvas.let {
-      val radius = circleRadius + borderWidth
+      //val radius = circleRadius + borderWidth
       it.translate(circleCenterXValue, circleCenterYValue)
-      it.drawCircle(radius, radius, radius, borderPaint)
+      //it.drawCircle(radius, radius, radius, borderPaint)
       it.drawBitmap(bitmap, 0f, 0f, null)
     }
   }
@@ -114,7 +116,7 @@ class CircleAvatarView : AppCompatImageView {
 
     canvas.let {
       val radiusWithBorder = (circleRadius + borderWidth)
-      it.drawARGB(0, 0, 0, 0)
+      //it.drawARGB(0, 0, 0, 0)
       it.drawCircle(radiusWithBorder, radiusWithBorder, circleRadius, borderPaint)
       it.drawBitmap(bitmap, circleRect, circleRect, mainPaint)
     }

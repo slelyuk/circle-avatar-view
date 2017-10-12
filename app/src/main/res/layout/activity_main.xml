@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
     tools:context="com.slelyuk.android.circleavatarview.demo.MainActivity"
     >
 
@@ -14,8 +13,10 @@
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:layout_margin="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toEndOf="@+id/avatar5"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
       />
 
   <com.slelyuk.android.circleavatarview.CircleAvatarView
@@ -23,7 +24,9 @@
       android:layout_width="51dp"
       android:layout_height="50dp"
       android:layout_margin="8dp"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toEndOf="@+id/image6"
       app:layout_constraintTop_toBottomOf="@+id/avatar3"
       />
 
@@ -32,7 +35,9 @@
       android:layout_width="50dp"
       android:layout_height="50dp"
       android:layout_margin="8dp"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toEndOf="@+id/image6"
       app:layout_constraintTop_toBottomOf="@+id/avatar4"
       />
 
@@ -41,7 +46,9 @@
       android:layout_width="100dp"
       android:layout_height="100dp"
       android:layout_margin="8dp"
-      app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      app:layout_constraintStart_toEndOf="@+id/avatar5"
       app:layout_constraintTop_toBottomOf="@+id/avatar"
       />
 
@@ -50,10 +57,12 @@
       android:layout_width="200dp"
       android:layout_height="200dp"
       android:layout_margin="8dp"
-      app:av_border_width="2dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginTop="8dp"
       app:av_border_color="@android:color/holo_red_light"
-      app:layout_constraintTop_toTopOf="parent"
+      app:av_border_width="2dp"
       app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
       />
 
   <ImageView
@@ -61,6 +70,8 @@
       android:layout_width="200dp"
       android:layout_height="200dp"
       android:layout_margin="8dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginTop="8dp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/avatar5"
       />

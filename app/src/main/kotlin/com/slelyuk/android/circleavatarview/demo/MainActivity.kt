@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
     PicassoLoader().loadImage(view5, AvatarPlaceholder("John Smith"),
         "https://cdn2.iconfinder.com/data/icons/avatar-face/96/avatar48-512.png")
 
-    //PicassoLoader().loadImage(view6, AvatarPlaceholder("Six Axis"), null)
-
     view3.setImageDrawable(AvatarPlaceholder("Third Member"))
     view4.setImageDrawable(AvatarPlaceholder("N..s.Se.."))
 
