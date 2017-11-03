@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
   val view5 by lazy { findViewById(id.avatar5) as CircleAvatarView }
   val view6 by lazy { findViewById(id.image6) as ImageView }
 
+  val button by lazy { findViewById(id.image6) as ImageView }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(layout.activity_main)

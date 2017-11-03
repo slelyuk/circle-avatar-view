@@ -112,14 +112,14 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null,
   companion object {
     private val COUNT_NAME_INITIALS = 2
     private val DEFAULT_PALETTE: List<Int> = listOf(
-        "#42860E",
-        "#2C6965",
-        "#005C7D",
-        "#584D70",
-        "#AA2C6C",
-        "#C14139",
-        "#BF5500",
-        "#636970")
+        "#636970",
+        "#584d70",
+        "#005c7d",
+        "#42860e",
+        "#2c6965",
+        "#c14139",
+        "#aa2c6c",
+        "#bf5500")
         .map { Color.parseColor(it) }
   }
 }
