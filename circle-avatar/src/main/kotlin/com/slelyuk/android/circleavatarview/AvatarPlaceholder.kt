@@ -100,7 +100,7 @@ class AvatarPlaceholder(name: String, tf: Typeface? = null,
    * @return abbreviation from given name
    */
   private fun abbreviateName(input: String, initialsCount: Int = COUNT_NAME_INITIALS): String {
-    val validInput = input.replace(Regex("[^A-Za-z0-9]"), "")
+    val validInput = input.replace(Regex("[^A-Za-z0-9 ]"), "")
     val seq: Sequence<String> = validInput.trim().splitToSequence(" ")
     return if (seq.count() < initialsCount) {
       if (validInput.length >= initialsCount) validInput.substring(0, initialsCount) else validInput
